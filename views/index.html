@@ -1,0 +1,40 @@
+{% extends "layout.html" %} {% block content %}
+
+<div class="page-header">
+  <h1>Welcome to Twitter.js!</h1>
+</div>
+<div class="row">
+  <div class="col-md-3">
+    <img
+      src="https://pbs.twimg.com/profile_images/2450268678/olxp11gnt09no2y2wpsh_normal.jpeg"
+    /><br />
+    <b>Your Name</b><br />
+    100 followers
+  </div>
+  <div class="col-md-9">
+    <!-- display tweets here -->
+    <!-- tweets tiene que coincidir con el key del objeto en tweets.js mediante el cual le mando el tweetList -->
+    {% for tweet in tweets %}
+    <h4>
+      <a href="/users/{{tweet.name}}">{{tweet.name}}</a>
+    </h4>
+    <li>
+      <a href="/tweets/{{tweet.id}}">{{tweet.content}}</a>
+    </li>
+    {% endfor %}
+    <!-- Lo que es determinante es el name de los inputs. Si yo pongo name pepito, me va a llegar al backend en req.body.pepito -->
+    {% if showForm %}
+    <form action="/tweets" method="POST">
+      <label for="name">Name:</label>
+      <input name="name" type="text" id="name" value="{{username}}" />
+
+      <label for="content">Text:</label>
+      <input name="content" type="text" id="content" style="width: 350px" />
+
+      <input type="submit" value="Submit" />
+    </form>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}
