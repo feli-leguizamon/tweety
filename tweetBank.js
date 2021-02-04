@@ -32,6 +32,7 @@ function find(properties) {
     return _.cloneDeep(_.filter(data, properties));
 }
 
+
 // La data no la exporto por temas de seguridad, no la quiero exponer.
 module.exports = { add, list, find };
 

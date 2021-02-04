@@ -24,6 +24,7 @@ app.use(express.urlencoded());
 var accessLogStream = fs.createWriteStream(path.join(__dirname, "access.log"), {
   flags: "a",
 });
+
 // setup the logger
 app.use(morgan("combined", { stream: accessLogStream }));
 
